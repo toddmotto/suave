@@ -1,20 +1,20 @@
 /*!
  *  Suave
- *  @version 1.0.0
+ *  @version 1.1.0
  *  @author Todd Motto http://toddmotto.com
  *  Project: https://github.com/toddmotto/suave
  *
  *  Re-engineering the HTML5 <video> tag for semantics and modularity.
  *  Copyright 2013. MIT licensed.
  */
-window.suave = ( function ( window, document, undefined ) {
+window.suave = (function (window, document, undefined) {
 
   'use strict';
 
   /*
    * Constructor function
    */
-  var Suave = function ( elem ) {
+  var Suave = function (elem) {
     this.elem = elem;
   };
 
@@ -26,8 +26,8 @@ window.suave = ( function ( window, document, undefined ) {
     init : function () {
 
       var dataAttr = this.elem.getAttribute('data-src');
-      var videoSource = dataAttr.match(/^([^]+){/)[1];
-      var fileExts = dataAttr.match(/{([^]+)}$/)[1].toString().replace(/\s/g, '').split(',');
+      var videoSource = dataAttr.match(/^([^]+)\{/)[1];
+      var fileExts = dataAttr.match(/\{([^]+)\}$/)[1].toString().replace(/\s/g, '').split(',');
       
       for (var i = 0; i < fileExts.length; i++) {
         var extension = fileExts[i];
@@ -48,4 +48,4 @@ window.suave = ( function ( window, document, undefined ) {
     new Suave(suave).init();
   });
 
-})( window, document );
+})(window, document);
